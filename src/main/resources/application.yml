@@ -1,0 +1,15 @@
+# Feign
+feign:
+  compression:
+    request:
+      mime-types: "application/json"
+  client:
+    config:
+      default:
+        loggerLevel: full
+integration:
+  usuario:
+    host: "http://localhost:8082"
+
+server:
+  port: 8083

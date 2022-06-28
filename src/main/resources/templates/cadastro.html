@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/shards.min.css">
+</head>
+<body>
+
+<!--- INICIO --->
+
+<div class="container jumbotron">
+
+<div th:switch="${usuario}">
+    <div th:case="null">
+    <h2>Usuário não encontrado!</h2>
+    <a class="btn bg btn-outline-success btn-pill btn-lg" aria-current="page" href="/home">Voltar</a>
+    </div>
+
+    <div th:case="*">
+        <nav class="navbar bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+                </a>
+
+                <ul class="nav justify-content-end">
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{vagas/{id}(id=${usuario.cpf})}" th:method="get">
+                            <i class="fa-solid fa-grid-2"></i>Vagas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{cadastro/cpf/{cpf}(cpf=${usuario.cpf})}" th:method="get">
+                            <i class="fa-solid fa-gear"></i>Cadastro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/home">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    <h3>Cadastro do cliente</h3>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="name" class="form-label">Nome</label>
+                <span th:text="${usuario.nome}" class="form-control" id="name"></span>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <label for="cpf" class="form-label">CPF</label>
+                <span th:text="${usuario.cpf}" class="form-control" id="cpf"></span>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <label for="birthdate" class="form-label">Data Nascimento</label>
+                <span th:text="${usuario.dataNascimento}" class="form-control" id="birthdate"></span>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <span th:text="${usuario.email}" class="form-control" id="email"></span>
+            </div>
+        </div>
+
+        <div class="col-4" th:each="contato : ${usuario.contatos}">
+            <label for="country" class="form-label">Telefone</label>
+            <span class="form-control" th:text="${contato.telefone}"></span>
+        </div>
+
+        <div class="col-3">
+            <div class="form-group">
+                <label for="logradouro" class="form-label">Logradouro</label>
+                <span th:text="${usuario.endereco.logradouro}" class="form-control" id="logradouro"></span>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="city" class="form-label">Cidade</label>
+                <span th:text="${usuario.endereco.cidade}" class="form-control" id="city"></span>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="zipcode" class="form-label">CEP</label>
+                <span th:text="${usuario.endereco.cep}" class="form-control" id="zipcode"></span>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label for="country" class="form-label">País</label>
+                <span th:text="${usuario.endereco.pais}" class="form-control" id="country"></span>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Abertura de chamado</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- CSS Dependencies -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/shards.min.css">
+</head>
+<body>
+
+<div class="container jumbotron">
+
+      <nav class="navbar bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+          </a>
+
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/home">Pesquisar</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <h3>Abertura de chamado</h3>
+
+  <form action="#" th:object="${usuario}" th:action="@{/novo}" method="post">
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" th:field="*{cpf}" class="form-control" id="cpf">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label for="titulo" class="form-label">Título</label>
+            <input type="text" th:field="*{titulo}" class="form-control" id="titulo">
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label for="descricao" class="form-label">Descricao</label>
+            <input type="text" th:field="*{descricao}" class="form-control" id="descricao">
+          </div>
+        </div>
+
+      </div>
+      <button type="submit" class="btn bg btn-outline-success btn-pill btn-lg">Enviar</button>
+  </form>
+</div>
+</body>
+</html>
